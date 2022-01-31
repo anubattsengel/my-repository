@@ -1,26 +1,22 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: |
-  
-Parameters:
+  Kittens Carousel is a static website application deployed with Apache Web Server 
+  on AWS Elastic Compute Cloud (EC2) Instance using AWS Cloudformation Service. 
   
 Resources: 
-
-Properties:
-  
-  ImageId: ami-0231217be14a6f3ba
-
-  InstanceType: t2.micro
-  
-  KeyName: firstkey
-  
-  SecurityGroups:
-    - launch-wizard-2
-  
-  Tags:
-    - Key: Name
-    - Value: Kitten
-  UserData: 
-    Fn::Base64:
+  myec2:
+    Type: AWS::EC2::Instance
+    Properties:
+     ImageId: ami-0231217be14a6f3ba
+     InstanceType: t2.micro
+     KeyName: firstkey
+     SecurityGroups:
+      - launch-wizard-2
+     Tags:
+      - Key: Name
+      - Value: Kitten
+     UserData: 
+        Fn::Base64:
           !Sub |
             #! /bin/bash
             yum update -y
@@ -28,21 +24,9 @@ Properties:
             systemctl start httpd
             systemctl enable httpd
             cd /var/www/html
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-Outputs: 
+            wget https://raw.githubusercontent.com/anubattsengel/my-repository/main/aws/Project-101-kittens-carousel-static-website-ec2/static-web/index.html
+            wget https://raw.githubusercontent.com/anubattsengel/my-repository/main/aws/Project-101-kittens-carousel-static-website-ec2/static-web/cat0.jpeg
+            wget https://raw.githubusercontent.com/anubattsengel/my-repository/main/aws/Project-101-kittens-carousel-static-website-ec2/static-web/cat1.jpeg
+            wget https://raw.githubusercontent.com/anubattsengel/my-repository/main/aws/Project-101-kittens-carousel-static-website-ec2/static-web/cat2.jpeg
+            wget https://raw.githubusercontent.com/anubattsengel/my-repository/main/aws/Project-101-kittens-carousel-static-website-ec2/static-web/cat3.png
 

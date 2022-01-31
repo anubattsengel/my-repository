@@ -1,0 +1,48 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: |
+  
+Parameters:
+  
+Resources: 
+
+Properties:
+  
+  ImageId: ami-0231217be14a6f3ba
+
+  InstanceType: t2.micro
+  
+  KeyName: firstkey
+  
+  SecurityGroups:
+    - launch-wizard-2
+  
+  Tags:
+    - Key: Name
+    - Value: Kitten
+  UserData: 
+    Fn::Base64:
+          !Sub |
+            #! /bin/bash
+            yum update -y
+            yum install httpd -y
+            systemctl start httpd
+            systemctl enable httpd
+            cd /var/www/html
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+Outputs: 
+
